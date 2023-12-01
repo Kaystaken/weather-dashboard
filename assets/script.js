@@ -1,16 +1,15 @@
-const CURRENT_DAY = 0;
-const ONE_DAY_LATER = 8;
-const TWO_DAYS_LATER = 16;
-const THREE_DAYS_LATER = 24;
-const FOURS_DAYS_LATER = 32;
-// should be 40, but the result list isn't designed that way
-const FIVE_DAYS_LATER = 39;
+const ONE_DAY_LATER = 0;
+const TWO_DAYS_LATER = 8;
+const THREE_DAYS_LATER = 16;
+const FOUR_DAYS_LATER = 24;
+const FIVE_DAYS_LATER = 32;
 
 var resultTextEl = $('#result-text');
 var resultContentEl = $('#result-content');
 var searchButton = $('#submit');
-
 searchButton.on('click', handleSearchFormSubmit);
+
+getWeatherData('Toronto', displayCurrentData, displayFutureData);
 
 // Click Button Function
 function handleSearchFormSubmit(event) {
@@ -31,10 +30,7 @@ function handleSearchFormSubmit(event) {
 
 // API CALL
 function searchApi(searchValue) {
-  getWeatherData(searchValue, displayCurrentData, displayHistoricalData);
-
-  // Clear Results Container
-  resultContentEl.textContent = '';
+  getWeatherData(searchValue, displayCurrentData, displayFutureData);
 }
 
 function getWeatherData(cityName, useCurrentData, useHistoricalData) {
@@ -46,12 +42,12 @@ function getWeatherData(cityName, useCurrentData, useHistoricalData) {
     })
     .then(results => {
       const cityName = results.city.name;
-      const currentDayData = results.list[CURRENT_DAY];
+      const currentDayData = results.list[0];
       const historicalData = [
         results.list[ONE_DAY_LATER],
         results.list[TWO_DAYS_LATER],
         results.list[THREE_DAYS_LATER],
-        results.list[FOURS_DAYS_LATER],
+        results.list[FOUR_DAYS_LATER],
         results.list[FIVE_DAYS_LATER]
       ];
 
@@ -64,23 +60,39 @@ function getWeatherData(cityName, useCurrentData, useHistoricalData) {
 }
 
 function displayCurrentData (currentData, cityName) {
-  const date = new Date().toLocaleDateString();
+  const date = new Date(currentData.dt_txt).toLocaleDateString();
   const currentElement = $('#current-data');
-  currentElement.append(`<div id="city-name">${cityName} ${date}</div>`);
-  currentElement.append(`<div class="current-data-point">Temp: ${currentData.main.temp}degreeC</div>`);
+  const iconAddress = `https://openweathermap.org/img/wn/${currentData.weather[0].icon}.png`;
+  const icon = $(`<img src=${iconAddress} />`);
+  const cityNameElement = $(`<div id="city-name">${cityName} ${date}</div>`);
+  cityNameElement.append(icon);
+  currentElement.append(cityNameElement);
+  currentElement.append(`<div class="current-data-point">Temp: ${currentData.main.temp}ºC</div>`);
   currentElement.append(`<div class="current-data-point">Wind: ${currentData.wind.speed}KPH</div>`);
   currentElement.append(`<div class="current-data-point">Humidity: ${currentData.main.humidity}%</div>`);
 }
 
-// Build Result Card Funciton
-function displayHistoricalData(result) { 
+// Build Result Card Function
+function displayFutureData(result) { 
   for (let day = 0; day < result.length; day++) {
-    displayHistoricalDay(result[day]);
+    displayFutureDay(result[day]);
   }
 }
 
-function displayHistoricalDay(weatherData) {
-  console.log(weatherData.dt_txt + ' data:', weatherData);
+function displayFutureDay(weatherData) {
+  const date = new Date(weatherData.dt_txt).toLocaleDateString();
+  const currentElement = $('#future-data');
+  const futureDateElement = $('<div class="future-date-container card"></div>');
+  const iconAddress = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`;
+  const icon = $(`<img src=${iconAddress} />`);
+  const cardBody = $('<div class="card-body"></div>');
+  cardBody.append(`<div class="future-date">${date}</div>`);
+  cardBody.append(icon);
+  cardBody.append(`<div class="future-data-point">Temp: ${weatherData.main.temp}ºC</div>`);
+  cardBody.append(`<div class="future-data-point">Wind: ${weatherData.wind.speed}KPH</div>`);
+  cardBody.append(`<div class="future-data-point">Humidity: ${weatherData.main.humidity}%</div>`);
+  futureDateElement.append(cardBody);
+  currentElement.append(futureDateElement);
 }
 
 function getParams() {
