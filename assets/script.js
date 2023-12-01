@@ -6,21 +6,19 @@ const FOURS_DAYS_LATER = 32;
 // should be 40, but the result list isn't designed that way
 const FIVE_DAYS_LATER = 39;
 
-var resultTextEl = document.querySelector('#result-text');
-var resultContentEl = document.querySelector('#result-content');
-//var searchFormEl = document.querySelector('#search-form');
-var searchButton = document.getElementById('submit');
+var resultTextEl = $('#result-text');
+var resultContentEl = $('#result-content');
+var searchButton = $('#submit');
 
-searchButton.addEventListener('click', handleSearchFormSubmit);
+searchButton.on('click', handleSearchFormSubmit);
 
 // Click Button Function
 function handleSearchFormSubmit(event) {
   // Stops form from submitting multiple times
   event.preventDefault();
 
-
   // Grabbing string from search box
-  var searchInputVal = document.querySelector('#search-input').value;
+  var searchInputVal = $('#search-input')[0].value;
 
   // If there's nothing typed in the search box, adding error in console
   if (!searchInputVal) {
@@ -66,8 +64,12 @@ function getWeatherData(cityName, useCurrentData, useHistoricalData) {
 }
 
 function displayCurrentData (currentData, cityName) {
-  console.log('city name:', cityName);
-  console.log('current data:', currentData);
+  const date = new Date().toLocaleDateString();
+  const currentElement = $('#current-data');
+  currentElement.append(`<div id="city-name">${cityName} ${date}</div>`);
+  currentElement.append(`<div class="current-data-point">Temp: ${currentData.main.temp}degreeC</div>`);
+  currentElement.append(`<div class="current-data-point">Wind: ${currentData.wind.speed}KPH</div>`);
+  currentElement.append(`<div class="current-data-point">Humidity: ${currentData.main.humidity}%</div>`);
 }
 
 // Build Result Card Funciton
@@ -88,3 +90,4 @@ function getParams() {
 
   searchApi(query);
 }
+
