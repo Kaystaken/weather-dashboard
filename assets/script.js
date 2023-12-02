@@ -9,7 +9,7 @@ var resultContentEl = $('#result-content');
 var searchButton = $('#submit');
 searchButton.on('click', handleSearchFormSubmit);
 
-getWeatherData('Toronto', displayCurrentData, displayFutureData);
+getWeatherData(displayCurrentData, displayFutureData);
 
 // Click Button Function
 function handleSearchFormSubmit(event) {
@@ -68,7 +68,7 @@ function displayCurrentData (currentData, cityName) {
   cityNameElement.append(icon);
   currentElement.append(cityNameElement);
   currentElement.append(`<div class="current-data-point">Temp: ${currentData.main.temp}ºC</div>`);
-  currentElement.append(`<div class="current-data-point">Wind: ${currentData.wind.speed}KPH</div>`);
+  currentElement.append(`<div class="current-data-point">Wind: ${currentData.wind.speed}kph</div>`);
   currentElement.append(`<div class="current-data-point">Humidity: ${currentData.main.humidity}%</div>`);
 }
 
@@ -89,7 +89,7 @@ function displayFutureDay(weatherData) {
   cardBody.append(`<div class="future-date">${date}</div>`);
   cardBody.append(icon);
   cardBody.append(`<div class="future-data-point">Temp: ${weatherData.main.temp}ºC</div>`);
-  cardBody.append(`<div class="future-data-point">Wind: ${weatherData.wind.speed}KPH</div>`);
+  cardBody.append(`<div class="future-data-point">Wind: ${weatherData.wind.speed}kph</div>`);
   cardBody.append(`<div class="future-data-point">Humidity: ${weatherData.main.humidity}%</div>`);
   futureDateElement.append(cardBody);
   currentElement.append(futureDateElement);
