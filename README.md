@@ -8,11 +8,11 @@ As a user who travels often I like to plan ahead and know what weather to expect
 
 ### Why?
 
-I built this project because I wanted to make it easy for people to check the weather for multiple places and days easily.
+I built this project because I wanted to make it easy for people to check the weather for multiple places and days.
 
 ### Problem Solved
 
-You can view the weather for the next 5 days and easily search any city. Recent searches are saved so you can view them quickly for return trips without having to type in teh same city again.
+You can view the weather for the next 5 days for any city. Recent searches are saved so you can view them quickly for return trips without having to type in the same city again.
 
 ### Learnings
 
