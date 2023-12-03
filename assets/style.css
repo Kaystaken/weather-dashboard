@@ -1,6 +1,6 @@
 header h1 { 
   text-align: center;
-  font-size: 80px;
+  font-size: 111px;
   padding-block: 3%;
   color: rgb(245, 245, 12);
 }
@@ -8,13 +8,13 @@ header h1 {
 #current-data {
   font-size: x-large;
   text-align: center;
-  color: rgb(245, 245, 12);
+  color: rgb(237, 245, 12);
 }
 
 .future-date-container {
   display: inline-flex;
   justify-content: space-between;
-  font-size: larger;
+  font-size: x-large;
   margin: 1.5%;
   color: white;
   background-image: url("./images/aside.jpg");
@@ -28,15 +28,15 @@ body {
 
 aside {
   margin-right: 20px;
-  padding: 20px;
+  padding: 13px;
   clear: both;
   float: right;
-  width: 20%;
+  width: 15%;
   height: 100%;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   background-image: url("./images/aside.jpg");
   border-radius: 25px;
-
+  align-items: flex-end;
 }
 
 .form-control {
@@ -49,9 +49,8 @@ aside {
 .history-search-btn {
   color: black;
   background-color: rgb(227, 255, 71);
+  display: inline-block;
   border-radius: 25px;
-  display: block;
-
 }
 
 #submit {
