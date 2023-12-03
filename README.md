@@ -22,14 +22,17 @@ I also learned that not being repetitive in script.js makes it easier to make ch
 
 I'm also getting more comfortable using images as backgrounds for styling.
 
+I learned to make sure it looks good on all screen sizes with the grid system
+
 ## Installation
 
 N/A
 
 ## Usage
 
+<img width="1243" alt="Screenshot 2023-12-03 at 12 17 19 AM" src="https://github.com/Kaystaken/weather-dashboard/assets/148396597/ef1bb6ad-be65-45a2-8c04-666ae51179fb">
 
-<img width="1582" alt="Screenshot 2023-12-02 at 10 49 05 PM" src="https://github.com/Kaystaken/weather-dashboard/assets/148396597/3dee91ec-69f2-4c08-ae1e-8b7116018f30">
+
 
 https://kaystaken.github.io/weather-dashboard/
 
