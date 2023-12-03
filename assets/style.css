@@ -8,7 +8,7 @@ header h1 {
 #current-data {
   font-size: x-large;
   text-align: center;
-  color: white;
+  color: rgb(245, 245, 12);
 }
 
 .future-date-container {
@@ -50,9 +50,11 @@ aside {
   background-color: rgb(227, 255, 71);
   border-radius: 25px;
   display: block;
+
 }
 
 #submit {
 background-color: rgb(243, 6, 109);
 font-size: large;
+border-radius: 25px;
 }
