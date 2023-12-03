@@ -43,6 +43,7 @@ aside {
   justify-content: flex-start;
   margin-right: 100%;
   border-radius: 25px;
+  display: flex;
 }
 
 .history-search-btn {
